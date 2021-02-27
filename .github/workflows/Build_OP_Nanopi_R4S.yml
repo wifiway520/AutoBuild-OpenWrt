@@ -11,8 +11,8 @@ on:
   #schedule:
   #  - cron: 0 8 * * 5
   
-  #watch:
-  #  types: [started]
+  watch:
+    types: [started]
 
 jobs:
   OpenWrt-18_06:
@@ -48,10 +48,10 @@ jobs:
         ./scripts/feeds install -a
         patch -p1 < "${GITHUB_WORKSPACE}/patches/1806-modify_for_r4s.patch"
         
-    #- name: Import external feeds
-    #  working-directory: ./openwrt
-    #  run: |
-    #    git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
+    - name: Import external feeds
+      working-directory: ./openwrt
+      run: |
+        git clone https://github.com/xiaorouji/openwrt-passwall.git package/lienol
     #    git clone "your_github_link" package/"your_folder_name"    
         
     - name: Build OpenWrt-18.06
